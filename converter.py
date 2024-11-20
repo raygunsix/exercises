@@ -1,5 +1,7 @@
 import FreeSimpleGUI as sg
 
+sg.theme("Black")
+
 def convert(feet, inches):
     """ converts feet and inches to meters """
     inches_in_feet = inches / 12.0
