@@ -9,13 +9,14 @@ st.set_page_config(layout="centered")
 
 # Fetch APOD data from NASA API
 # https://api.nasa.gov/
-r = requests.get(url)
-
+r = requests.get(url, timeout=10)
+content = r.json()
 print(r)
 
+title = content["title"]
+explanation = content["explanation"]
+
 # Render web page
+st.header(title)
 
-
-st.title("Title")
-
-st.text("text")
+st.text(explanation)
