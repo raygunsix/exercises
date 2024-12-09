@@ -25,7 +25,6 @@ for filepath in filepaths:
 # Format data
 df = pd.DataFrame(moods, columns=['date','pos','neg']) 
 df.sort_values(by='date', inplace=True)
-print(df)
 
 # Render data
 st.title("Diary Mood")
