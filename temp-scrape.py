@@ -1,5 +1,6 @@
 import requests
 import selectorlib
+import sqlite3
 from datetime import datetime
 
 URL="https://programmer100.pythonanywhere.com/"
@@ -7,6 +8,8 @@ HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) ' \
     'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 ' \
     'Safari/537.36'}
+
+connection = sqlite3.connect("temp.sqlite3")
 
 def scrape(url):
     response = requests.get(url, headers=HEADERS)
@@ -22,9 +25,10 @@ def extract(source):
     return value
 
 def store(temp):
-    with open("data-temp/data.txt", "a") as file:
-        now = datetime.now().strftime("%y-%m-%d-%H-%M-%S")    
-        file.write(f"{now},{temp}\n")
+    now = datetime.now().strftime("%y-%m-%d-%H-%M-%S")
+    cursor = connection.cursor()
+    cursor.execute("INSERT INTO temps VALUES(?,?)", (now, temp))    
+    connection.commit()
 
 if __name__ == "__main__":
     source = scrape(URL)

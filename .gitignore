@@ -162,7 +162,8 @@ cython_debug/
 #.idea/
 
 # Project specific files
-output/*
 *.pdf
-files/*
+*.sqlite3
 data-temp/*
+output/*
+files/*
