@@ -23,9 +23,8 @@ def extract(source):
 
 def store(temp):
     with open("data-temp/data.txt", "a") as file:
-        now = datetime.now() 
-        date_time = now.strftime("%y-%m-%d-%H-%M-%S")       
-        file.write(f"{date_time},{temp}\n")
+        now = datetime.now().strftime("%y-%m-%d-%H-%M-%S")    
+        file.write(f"{now},{temp}\n")
 
 if __name__ == "__main__":
     source = scrape(URL)
