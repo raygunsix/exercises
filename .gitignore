@@ -164,6 +164,5 @@ cython_debug/
 # Project specific files
 *.pdf
 *.sqlite3
-data-temp/*
 output/*
 files/*
