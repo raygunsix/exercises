@@ -13,5 +13,16 @@ def scrape(url):
     source = response.text
     return source
 
+def extract(source):
+    extractor = selectorlib.Extractor.from_yaml_string("""
+    temp:
+        css: '#temperatureId'                                                      
+    """)
+    value = extractor.extract(source)["temp"]
+    return value
+
+
 if __name__ == "__main__":
-    print(scrape(URL)) 
+    source = scrape(URL)
+    print(extract(source))
+    
