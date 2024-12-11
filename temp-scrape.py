@@ -1,6 +1,6 @@
 import requests
 import selectorlib
-
+from datetime import datetime
 
 URL="https://programmer100.pythonanywhere.com/"
 HEADERS = {
@@ -21,8 +21,14 @@ def extract(source):
     value = extractor.extract(source)["temp"]
     return value
 
+def store(temp):
+    with open("data-temp/data.txt", "a") as file:
+        now = datetime.now() 
+        date_time = now.strftime("%y-%m-%d-%H-%M-%S")       
+        file.write(f"{date_time},{temp}\n")
 
 if __name__ == "__main__":
     source = scrape(URL)
-    print(extract(source))
-    
+    temp = extract(source)
+    store(temp)
+
