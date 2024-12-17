@@ -1,12 +1,16 @@
 import sys
 
-from PyQt6.QtWidgets import QApplication, QComboBox, QGridLayout, QLabel, QLineEdit, QPushButton, QStatusBar, QWidget 
+from PyQt6.QtWidgets import \
+    QApplication, QComboBox, QGridLayout, QLabel, QLineEdit, QPushButton, \
+    QStatusBar, QWidget 
 
 
 class SpeedCalculator(QWidget):
     def __init__(self):
         super().__init__()
         grid = QGridLayout()
+
+        self.setWindowTitle("Average Speed Calculator")
 
         # Create widgets
         distance_label = QLabel("Distance: ")
@@ -36,7 +40,8 @@ class SpeedCalculator(QWidget):
 
     def average_speed(self):
 
-        avg = int(self.distance_line_edit.text()) / int(self.time_line_edit.text())
+        avg = int(self.distance_line_edit.text()) / \
+                int(self.time_line_edit.text())
 
         if self.combo.currentText() == "Imperial (miles)":
             units = "mph"
